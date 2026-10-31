@@ -6,6 +6,12 @@ A small playground for generating video clips with Seedance on BytePlus ModelArk
 
 _A frame from `test_2_5_480p_4s`, the first clip made with the script (Seedance 2.5, 480p, 4 seconds). The clip itself is gitignored; the frame is kept._
 
+**Problem.** A Seedance video run on BytePlus ModelArk is an asynchronous task that has to be created, polled and downloaded, and each run's settings and token cost need recording.
+
+**Idea.** One Python script runs the whole task and appends the model, the full request parameters, the task ID and the tokens charged to a JSONL log.
+
+**Built.** `scripts/seedance.py`, standard library only, covering Seedance 2.5, 2.0 and 2.0-fast with duration, resolution, ratio, audio, seed and image or video references. One test clip so far (2.5, 480p, 4 seconds, 38,830 tokens charged). 5 commits on 2 days, Oct 23 to Oct 25, 2026.
+
 ## What it does
 
 `scripts/seedance.py` creates a video generation task on the ModelArk API, polls it until it finishes, downloads the result and appends a record of the run to `output/runs.jsonl`. It uses only the Python standard library.
