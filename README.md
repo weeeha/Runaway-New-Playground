@@ -12,6 +12,8 @@ _A frame from `test_2_5_480p_4s`, the first clip made with the script (Seedance 
 
 **Built.** `scripts/seedance.py`, standard library only, covering Seedance 2.5, 2.0 and 2.0-fast with duration, resolution, ratio, audio, seed and image or video references. One test clip so far (2.5, 480p, 4 seconds, 38,830 tokens charged). 5 commits on 2 days, Oct 23 to Oct 25, 2026.
 
+**Decision.** The source clip in `input/` was cut to 10 seconds at 720p so it fits the video-to-video input limits. It is not used yet, because Seedance rejects reference videos with real faces.
+
 ## What it does
 
 `scripts/seedance.py` creates a video generation task on the ModelArk API, polls it until it finishes, downloads the result and appends a record of the run to `output/runs.jsonl`. It uses only the Python standard library.
